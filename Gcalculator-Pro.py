@@ -30,7 +30,7 @@ if (pas == password):
     o = 0
     nc = 0
     while (o == 0):
-        op = int(input(Fore.YELLOW + "Enter your choice:\n1.power calculation                               11.Unit convertor (meter)\n2.multiplication                                  12.Unit convertor (litre)\n3.division                                        13.Unit Converter (gram)\n4.addition                                        14.Area finder(2D)\n5.subtaction                                      15.volume finder(3D)\n6.division (remainder)                            16.Temperature convertor\n7.root finder"
+        op = int(input(Fore.YELLOW + "Enter your choice:\n1.power calculation                               11.Unit convertor (meter)                               21.Finder(Sin, Cos, Tan)\n2.multiplication                                  12.Unit convertor (litre)                               22.Time partitioner and difference finder\n3.division                                        13.Unit Converter (gram)\n4.addition                                        14.Area finder(2D)\n5.subtaction                                      15.volume finder(3D)\n6.division (remainder)                            16.Temperature convertor\n7.root finder"
                                      "                                     17.Factor Finder\n8.division (divident)                             18.Prime Factoriser\n9.division (divisor)                              19.Multiple Finder\n10.division (divisor with remainder)              20.Multiple within range\n----------------> "))
         print("\n\n")
         if (op == 1):
@@ -1103,7 +1103,77 @@ if (pas == password):
             print("Multiples of", number, "within the range", range_start, "to", range_end, ":")
             print(multiples)
             print("\n\n========================================================================")
+        elif (op == 21):
+            import math
+            nc = nc + 1
+            print("\n\n                                                    Session --", nc,
+                  "                                 ")
+            def find_trig_values(angle):
+                # Convert angle to radians
+                angle_rad = math.radians(angle)
+
+                # Calculate sine, cosine, and tangent
+                sine = math.sin(angle_rad)
+                cosine = math.cos(angle_rad)
+                tangent = math.tan(angle_rad)
+
+                return sine, cosine, tangent
+
+
+            # Take input from the user
+            angle_degrees = float(input("Enter an angle in degrees: "))
+
+            # Find trigonometric values
+            sine, cosine, tangent = find_trig_values(angle_degrees)
+
+            # Display the results
+            print("Angle:", angle_degrees)
+            print("Sine:", sine)
+            print("Cosine:", cosine)
+            print("Tangent:", tangent)
+            print("\n\n========================================================================")
+        elif (op == 22):
+            import datetime
+            nc = nc + 1
+            print("\n\n                                                    Session --", nc,
+                  "                                 ")
+            def calculate_duration(start, end):
+                duration = end - start
+
+                years = duration.days // 365
+                months = duration.days // 30
+                weeks = duration.days // 7
+                days = duration.days
+                hours = duration.seconds // 3600
+                minutes = (duration.seconds // 60) % 60
+                seconds = duration.seconds % 60
+                milliseconds = duration.microseconds // 1000
+
+                return years, months, weeks, days, hours, minutes, seconds, milliseconds
+
+
+            # Take input for start and end dates/times
+            start_input = input("Enter the start date and time (YYYY-MM-DD HH:MM:SS): ")
+            end_input = input("Enter the end date and time (YYYY-MM-DD HH:MM:SS): ")
+
+            # Convert input to datetime objects
+            start_date = datetime.datetime.strptime(start_input, "%Y-%m-%d %H:%M:%S")
+            end_date = datetime.datetime.strptime(end_input, "%Y-%m-%d %H:%M:%S")
+
+            # Calculate duration
+            years, months, weeks, days, hours, minutes, seconds, milliseconds = calculate_duration(start_date, end_date)
+
+            # Display the duration
+            print("Duration:")
+            print("Years:", years)
+            print("Months:", months)
+            print("Weeks:", weeks)
+            print("Days:", days)
+            print("Hours:", hours)
+            print("Minutes:", minutes)
+            print("Seconds:", seconds)
+            print("Milliseconds:", milliseconds)
+            print("\n\n========================================================================")
 else:
     print(Fore.RED + "!!Wrong password!!")
 print(Fore.WHITE + " ")
-           
