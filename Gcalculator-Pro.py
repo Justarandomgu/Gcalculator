@@ -30,7 +30,8 @@ if (pas == password):
     o = 0
     nc = 0
     while (o == 0):
-        op = int(input(Fore.YELLOW + "Enter your choice:\n1.power calculation                               11.Unit convertor (meter)                               21.Finder(Sin, Cos, Tan)\n2.multiplication                                  12.Unit convertor (litre)                               22.Time partitioner and difference finder\n3.division                                        13.Unit Converter (gram)\n4.addition                                        14.Area finder(2D)\n5.subtaction                                      15.volume finder(3D)\n6.division (remainder)                            16.Temperature convertor\n7.root finder"
+        op = int(input(Fore.YELLOW + "Enter your choice:\n1.power calculation                               11.Unit convertor (meter)                               21.Finder(Sin, Cos, Tan)\n2.multiplication                                  12.Unit convertor (litre)                               22.Time partitioner and difference finder\n3.division                                        13.Unit Converter (gram)                                "
+                                     "23.LCM Finder\n4.addition                                        14.Area finder(2D)                                      24.HCF Finder\n5.subtaction                                      15.volume finder(3D)\n6.division (remainder)                            16.Temperature convertor\n7.root finder"
                                      "                                     17.Factor Finder\n8.division (divident)                             18.Prime Factoriser\n9.division (divisor)                              19.Multiple Finder\n10.division (divisor with remainder)              20.Multiple within range\n----------------> "))
         print("\n\n")
         if (op == 1):
@@ -1174,6 +1175,59 @@ if (pas == password):
             print("Seconds:", seconds)
             print("Milliseconds:", milliseconds)
             print("\n\n========================================================================")
+        elif (op == 23):
+            def gcd(a, b):
+                while b:
+                    a, b = b, a % b
+                return a
+
+
+            def lcm(a, b):
+                return (a * b) // gcd(a, b)
+
+
+            def lcm_multiple(numbers):
+                result = 1
+                for num in numbers:
+                    result = lcm(result, num)
+                return result
+
+
+            # Input the number of numbers
+            n = int(input("Enter the number of numbers: "))
+
+            numbers = []
+            for i in range(n):
+                num = int(input(f"Enter number {i + 1}: "))
+                numbers.append(num)
+
+            result = lcm_multiple(numbers)
+            print(f"The LCM of the numbers is: {result}\n\n---------------------------------------------------------")
+        elif (op == 24):
+            def gcd(a, b):
+                while b:
+                    a, b = b, a % b
+                return a
+
+
+            def hcf_multiple(numbers):
+                result = numbers[0]
+                for i in range(1, len(numbers)):
+                    result = gcd(result, numbers[i])
+                return result
+
+
+            # Input the number of numbers
+            n = int(input("Enter the number of numbers: "))
+
+            numbers = []
+            for i in range(n):
+                num = int(input(f"Enter number {i + 1}: "))
+                numbers.append(num)
+
+            result = hcf_multiple(numbers)
+            print(f"The HCF of the numbers is: {result}\n\n--------------------------------------------------------------")
+
 else:
     print(Fore.RED + "!!Wrong password!!")
 print(Fore.WHITE + " ")
